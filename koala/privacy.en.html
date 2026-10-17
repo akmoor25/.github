@@ -12,11 +12,11 @@
 
 <h1>Privacy Policy</h1>
 <p class="meta">App: Trip Itinerary (development code name: koala)<br>
-Version 1 ・ Effective date: <!-- TODO(確認): 施行日 -->(to be decided)</p>
+Version 1 ・ Effective date: October 18, 2026</p>
 
 <div class="note">
-<p>This app is a portfolio for a job application. This document explains the data the app handles. It has not been reviewed by a legal professional.</p>
-<p>This page is provided on GitHub Pages (records of viewing it follow GitHub's privacy policy).</p>
+<p>This document explains the data handled by the app built as a portfolio. It has not been reviewed by a legal professional.</p>
+<p>This page is provided on GitHub Pages, and records of viewing it follow GitHub's privacy policy.</p>
 </div>
 
 <p>The operator is an individual developer (GitHub: <a href="https://github.com/akmoor25">akmoor25</a>). This document describes only facts confirmed from the app's code and settings.</p>
@@ -33,9 +33,12 @@ Version 1 ・ Effective date: <!-- TODO(確認): 施行日 -->(to be decided)</p
 </ul>
 
 <h3>1.2 Sent to servers</h3>
-<p>When you tap "Get started", the app connects to Firebase, which is provided by Google. You don't need to register an account. Crashlytics reporting and the automatic setup of FCM are turned off in the app's settings until you tap "Get started".<!-- TODO(確認): Android の実機で、「はじめる」の前に Crashlytics と FCM が送信しないことを確かめる（doc/operations の手順） --> The following information is sent to servers.</p>
+<p>When you tap "Get started", the app connects to Firebase, which is provided by Google. You don't need to register an account. Crashlytics reporting and the automatic setup of FCM are turned off in the app's settings until you tap "Get started". The following information is sent to servers.</p>
 <div class="table-wrap">
 <table>
+<colgroup>
+<col style="width: 160px;">
+</colgroup>
 <thead>
 <tr><th>Information</th><th>What it is, and when it is sent</th></tr>
 </thead>
@@ -61,8 +64,8 @@ Version 1 ・ Effective date: <!-- TODO(確認): 施行日 -->(to be decided)</p
 
 <h3>1.3 What we don't collect</h3>
 <ul>
-<li>Your name, email address, phone number, location, contacts or advertising ID. The app doesn't include location or contacts permissions, and the advertising ID permission is removed.</li>
-<li>Usage analytics (such as Firebase Analytics). They are not used.</li>
+<li>Your name, email address, phone number, location, contacts or advertising ID.</li>
+<li>Usage analytics (such as Firebase Analytics).</li>
 <li>Camera images. The camera is used only to scan QR codes. Images are neither saved nor sent.</li>
 </ul>
 
@@ -75,14 +78,27 @@ Version 1 ・ Effective date: <!-- TODO(確認): 施行日 -->(to be decided)</p
 </ul>
 
 <h2 id="purpose">2. How we use the information</h2>
-<ul>
-<li>To save trips, steps and notes, and to show them to participants in shared editing.</li>
-<li>To tell owners and participants apart and to keep others from reading or writing your trips (anonymous ID).</li>
-<li>To send push notifications about joining, leaving, deleting a trip, and stopping shared editing (nickname, notification destination).</li>
-<li>To avoid sending the same notification twice (notification send records).</li>
-<li>To find and fix the cause of problems (problem reports).</li>
-<li>To delete data that is no longer used and free up space (the daily cleanup).</li>
-</ul>
+<p>We use the information in chapter 1 only for the purposes below.</p>
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>Purpose</th><th>Information used</th></tr>
+</thead>
+<tbody>
+<tr><td>To save trips, steps and notes, and to let the members of the same trip view and edit them together.</td><td>Trips, Steps, Notes, Member records</td></tr>
+<tr><td>To show who is editing where in a shared note.</td><td>Cursors (including the first character of the nickname)</td></tr>
+<tr><td>To tell a trip's owner and participants apart, and to let only its members read and write it.</td><td>Anonymous user ID, Member records</td></tr>
+<tr><td>To check the passphrase when someone joins a trip.</td><td>Passphrase hash</td></tr>
+<tr><td>To send push notifications about joining, leaving, deleting a trip, and stopping shared editing.</td><td>Notification destination, Nickname, Trips (title), Closure record, Notification content</td></tr>
+<tr><td>To avoid sending the same notification twice, and to suppress rapid repeats.</td><td>Notification send records</td></tr>
+<tr><td>To let you read offline, to show your plans in the home screen widget, to show the QR code again later, and to display the app's font.</td><td>What is stored only on your device (the cache of your trips, home screen widget data, the passphrase in plain text, the font cache)</td></tr>
+<tr><td>To find and fix the cause of problems.</td><td>Problem reports</td></tr>
+<tr><td>To check that the notification and cleanup functions ran correctly, and to investigate problems.</td><td>Server logs</td></tr>
+<tr><td>To delete data that is no longer used and free up space (the daily cleanup, automatic deletion of anonymous accounts).</td><td>Trips, Steps, Notes, Member records, Passphrase hash, Cursors, Notification send records, Closure record, Notification destination (FCM token), Anonymous user ID</td></tr>
+</tbody>
+</table>
+</div>
+<p>Connection data (such as IP addresses) is handled by Google's services for security (the last row in 1.2). The operator does not use it for the purposes above.</p>
 <p>We don't use it beyond these purposes, and we don't use it for advertising or marketing.</p>
 
 <h2 id="storage">3. Where it is stored, and outside services</h2>
@@ -111,24 +127,27 @@ Version 1 ・ Effective date: <!-- TODO(確認): 施行日 -->(to be decided)</p
 <h2 id="retention">5. Retention and deletion</h2>
 <div class="table-wrap">
 <table>
+<colgroup>
+<col style="width: 160px;">
+</colgroup>
 <thead>
 <tr><th>Information</th><th>How long it is kept, and when it is deleted</th></tr>
 </thead>
 <tbody>
-<tr><td>Trips, steps, notes, member records, passphrase hashes, cursors</td><td>A trip is kept until the owner deletes it, or until all data is deleted after the job application process ends.<!-- TODO(確認): 匿名アカウントの自動削除（Identity Platform の自動クリーンアップ）を有効にしたあと、保存期間の記述を確定する --><br>In addition, a cleanup that runs every day at 4:00 (Japan time) deletes trips whose owner's anonymous account no longer exists in Firebase Authentication, together with their related data. It deletes them even if participants remain. A trip is not deleted just because it is old.<br>A cursor disappears when the app goes to the background or the connection is lost.</td></tr>
-<tr><td>Anonymous user ID, nickname</td><td>You can delete them with "Delete account and data" in the menu (chapter 6). If you don't, they remain until the operator deletes the user in the Firebase console. After deletion, it takes up to 180 days for the data to be removed from Google's systems, including backups (according to Google).</td></tr>
+<tr><td>Trips, steps, notes, member records, passphrase hashes, cursors</td><td>A trip is kept until the owner deletes it, until the owner's anonymous account is deleted, or until all data is deleted when the app's publication ends.<br>An anonymous account is deleted by Firebase's automatic cleanup once it is 30 days old or older (the basis is the days since it was created, not the day it was last used). When an account is deleted, a cleanup that runs every day at 4:00 (Japan time) deletes the trips that account owned, together with their related data. It deletes them even if participants remain. <strong>So even a trip that is in use can disappear about 30 days after its owner's account was created.</strong> The cleanup does not delete a trip just because it is old.<br>When a participant's account is deleted automatically, that participant's member record (anonymous ID) inside other people's trips remains until those trips are deleted.<br>A cursor disappears when the app goes to the background or the connection is lost.</td></tr>
+<tr><td>Anonymous user ID, nickname</td><td>Deleted automatically by Firebase's automatic cleanup once the account is 30 days old or older. Before that, you can delete them yourself with "Delete account and data" in the menu (chapter 6). After deletion, it takes up to 180 days for the data to be removed from Google's systems, including backups (according to Google).</td></tr>
 <tr><td>FCM token</td><td>It is deleted automatically when sending shows it is no longer valid. "Delete account and data" removes all tokens on the server and discards this device's FCM token. After the anonymous account is gone, the cleanup deletes it.</td></tr>
 <tr><td>Closure record</td><td>A function deletes it after deciding on the notification. If shared editing is stopped while no member is in the trip, the notification process does not run, so the record may remain while the trip remains. It is deleted by the cleanup when the trip is deleted.</td></tr>
 <tr><td>Notification send records</td><td>Records that are one day old or older are deleted by the daily cleanup. Because the cleanup runs once a day, they remain for about two days at most.</td></tr>
 <tr><td>Problem reports (Crashlytics)</td><td>Google keeps them for 90 days (stack traces and identifiers). After 90 days, the deletion process starts.</td></tr>
-<tr><td>Server logs (Cloud Logging)</td><td>The Google Cloud default is 30 days.<!-- TODO(確認): koala-portfolio の Cloud Logging の保存期間を変更していないか --></td></tr>
+<tr><td>Server logs (Cloud Logging)</td><td>The Google Cloud default is 30 days.</td></tr>
 <tr><td>Data on your device</td><td>Deleted when you uninstall the app. The passphrase in plain text is also deleted when you delete the trip or stop shared editing. <strong>If the server-side cleanup deletes a trip, the passphrase on the device remains.</strong> The home screen widget data is deleted when you delete that trip or leave it. The cache of trips may remain on the device after "Delete account and data", until you uninstall the app.</td></tr>
 </tbody>
 </table>
 </div>
 
-<h3>After the job application process ends</h3>
-<p>We delete everything promptly after the job application process ends. We stop the notification and cleanup functions and delete all data in Realtime Database and all anonymous users. If needed, we delete the whole Firebase project. After that, the distributed APK can no longer connect to Firebase, and shared editing and saving notes stop working.</p>
+<h3>After the app's publication ends</h3>
+<p>When the app's publication ends, we delete everything promptly. We stop the notification and cleanup functions and delete all data in Realtime Database and all anonymous users. If needed, we delete the whole Firebase project. After that, the distributed APK can no longer connect to Firebase, and shared editing and saving notes stop working.</p>
 <p>According to Google, data in Firebase Authentication and FCM is removed from Google's systems, including backups, within 180 days after a deletion request.</p>
 
 <h2 id="control">6. What you can do</h2>
@@ -151,7 +170,7 @@ What remains after deletion: steps and notes you wrote in other people's trips (
 
 <h2 id="contact">7. Contact</h2>
 <p>Operator: an individual developer (GitHub: <a href="https://github.com/akmoor25">akmoor25</a>)</p>
-<p><!-- TODO(確認): 問い合わせ先（専用のメールアドレスなど） -->The contact address is being prepared.</p>
+<p>Email: <a href="mailto:akmoor25.io@gmail.com">akmoor25.io@gmail.com</a></p>
 
 <h2 id="revision">8. Changes</h2>
 <p>We revise this document when the app or how it is run changes. The revised document is published on this page. The app has no feature to record agreement or to ask for agreement again when the document changes. The revision history is at the end of this page.</p>
@@ -159,7 +178,7 @@ What remains after deletion: steps and notes you wrote in other people's trips (
 <footer>
 <h2 id="history">Revision history</h2>
 <ul>
-<li>Version 1 ・ <!-- TODO(確認): 施行日 -->(effective date to be decided): first version.</li>
+<li>Version 1 ・ October 18, 2026: first version.</li>
 </ul>
 </footer>
 </main>
